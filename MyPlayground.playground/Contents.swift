@@ -52,11 +52,12 @@ var str = "Hello, playground"
 //	}
 //}
 //
-//var A = [1, 1, , 1, 1]
-//let ArrHead = A.filter{$0==0}
-//let ArrTail = A.filter{$0==1}
-//let totalHeads = ArrHead.count
-//let totalTails = ArrTail.count
+var A = [1, 1, 1, 1]
+let ArrHead = A.filter{$0==0}
+let ArrTail = A.filter{$0==1}
+let totalHeads = ArrHead.count
+let totalTails = ArrTail.count
+
 //
 //var firstSequence = 0
 //var secondSequence = 1
@@ -96,31 +97,93 @@ var str = "Hello, playground"
 //
 //}
 //
-var X =  [1,8,7,3,4,1,8]
+//let sortedX = X.sorted()
+//var distance = [Int]()
+//
+//
+//for (index, value) in sortedX.enumerated() {
+//	if index != sortedX.count - 1 {
+//		let calc =  sortedX[index] - sortedX[index + 1]
+//		print(calc)
+//		distance.append(abs(calc))
+//	}
+//
+//}
+//let max: Int = distance.max()!
+//let min: Int = distance.min()!
+//
+////print (min)
+//
+////print (max)
+//
+//
+//
+//
+//let counts = max - min
+////print(arrUnique[indexPopular])
+////print(arrCount)
+////print(counts)
+//
+//var arrCharSorted = [String]()
+//var arrResult =  [String]()
+//let arrString = ["pear","amleth","dormitory","tinsel","dirty room","hamlet","listen","silent"]
+//var arrTrimmed = [String]()
+//for string in arrString {
+//	let strclean = string.replacingOccurrences(of: " ", with: "")
+//	let arr = strclean.sorted()
+//
+//	arrCharSorted.append(String(arr))
+//
+//}
+//
+//let listAnagram = Array(Set(arrCharSorted))
+//print("arrCharSorted", listAnagram)
+//
+//for str in listAnagram {
+//	for str2 in arrString {
+//		let str2clean = str2.replacingOccurrences(of: " ", with: "")
+//
+//		if str.sorted() == str2clean.sorted() {
+//			arrResult.append(str2)
+//		}
+//	}
+//}
+//
+//print("RESULT", arrResult)
+////let arrFilter = arrTrimmed.filter{ $0.sorted() == $1.sorted()}
+////
+//
+////
+//
+var X = [5,1,3,2,7,3,11,16,0,25,4]
 var Y = [6,4,1,8,5,1,7]
 
-let sortedX = X.sorted()
-var distance = [Int]()
 
 
-for (index, value) in sortedX.enumerated() {
-	if index != sortedX.count - 1 {
-		let calc =  sortedX[index] - sortedX[index + 1]
-		print(calc)
-		distance.append(abs(calc))
-	}
-	
+func doSort(item:[Int]) -> [Int] {
+		var arrayTemp = item
+		var temp: Int = 0
+		var indexNext = 0
+		for (i, _) in arrayTemp.enumerated() {
+			print("index i", i)
+			indexNext = i + 1
+			if indexNext >= arrayTemp.count {
+				break
+			}
+			print("index next", indexNext)
+				for j in indexNext...arrayTemp.count - 1  {
+					print("J", j)
+					print("array ke", arrayTemp[i], "index", j)
+					if (arrayTemp[i] > arrayTemp[j]) {
+						temp =  arrayTemp[i];
+						arrayTemp[i] = arrayTemp[j];
+						arrayTemp[j] = temp;
+					}
+				}
+			
+		}
+		return arrayTemp
 }
-let max: Int = distance.max()!
-let min: Int = distance.min()!
 
-print (min)
-	
-print (max)
+print(doSort(item: X))
 
-
-
-let counts = max - min
-//print(arrUnique[indexPopular])
-//print(arrCount)
-print(counts)
