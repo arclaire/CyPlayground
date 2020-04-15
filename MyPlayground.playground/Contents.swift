@@ -2,17 +2,18 @@ import UIKit
 
 var str = "Hello, playground"
 
+//MARK:-BitShifting
 //var x: Int = 2
-//x = x << 2
-//("%d ",x);
-//
-//
+//x = x << 1
+//print(x);
+
+
 //var a: String  = "A"
 //var b: String! = "B"
 //var c: String?
 //
 //c = nil
-//
+//MARK: -StringManipulation
 //let string = "sampple string forever"
 //
 //let arr = string.components(separatedBy: " ")
@@ -51,12 +52,12 @@ var str = "Hello, playground"
 //		indexPopular = index
 //	}
 //}
-//
-var A = [1, 1, 1, 1]
-let ArrHead = A.filter{$0==0}
-let ArrTail = A.filter{$0==1}
-let totalHeads = ArrHead.count
-let totalTails = ArrTail.count
+//MARK: - Array / Dictionary Manipulation Sorting,filter,
+//var A = [1, 1, 1, 1]
+//let ArrHead = A.filter{$0==0}
+//let ArrTail = A.filter{$0==1}
+//let totalHeads = ArrHead.count
+//let totalTails = ArrTail.count
 
 //
 //var firstSequence = 0
@@ -304,144 +305,151 @@ let totalTails = ArrTail.count
 //print(popularNFeatures(numFeatures: 5, topFeatures: 2, possibleFeatures: arrFeat, numFeatureRequests: 3, featureRequests: arrWish))
 
 
-
-class server {
-    var intValue = 0
-    var intNeighbourTop = 0
-    var intNeighbourLeft = 0
-    var intNeighbourBot = 0
-    var intNeighbourRight = 0
-}
-func minimumHours(rows:Int, columns:Int, grid:[[Int]]) -> Int {
-    var intCount = 0
-    var arrSevers = [server]()
-    for i in 0...rows - 1 {
-        
-        for j in 0...columns - 1 {
-            //print("INDEX I=",i, " J =",j)
-            var srv = server()
-            let arr2 = grid[i]
-            srv.intValue = arr2[j]
-            if i == 0 {
-                srv.intNeighbourTop = -1
-                let arr3 = grid[i + 1]
-                srv.intNeighbourBot = arr3[j]
-                if j == 0 || j == columns - 1 {
-                    if j == 0 {
-                        srv.intNeighbourLeft = -1
-                        srv.intNeighbourRight = arr2[j + 1]
-                    } else {
-                        srv.intNeighbourRight = -1
-                        srv.intNeighbourLeft = arr2[j - 1]
-                    }
-                } else {
-                    srv.intNeighbourLeft = arr2[j - 1]
-                    srv.intNeighbourRight = arr2[j + 1]
-                    
-                }
-            } else if i == rows - 1{
-                srv.intNeighbourBot = -1
-                let arr3 = grid[i - 1]
-                srv.intNeighbourTop = arr3[j]
-                if j == 0 || j == columns - 1 {
-                    if j == 0 {
-                        srv.intNeighbourLeft = -1
-                    } else {
-                        srv.intNeighbourRight = -1
-                    }
-                } else {
-                    srv.intNeighbourLeft = arr2[j - 1]
-                    srv.intNeighbourRight = arr2[j + 1]
-                    
-                }
-            } else {
-                let arrTop = grid[i - 1]
-                let arrBot = grid[i + 1]
-                srv.intNeighbourBot = arrBot[j]
-                srv.intNeighbourTop = arrTop[j]
-                
-                if j == 0 || j == columns - 1 {
-                    if j == 0 {
-                        srv.intNeighbourLeft = -1
-                    } else {
-                        srv.intNeighbourRight = -1
-                    }
-                } else {
-                    srv.intNeighbourLeft = arr2[j - 1]
-                    srv.intNeighbourRight = arr2[j + 1]
-                    
-                }
-            }
-            arrSevers.append(srv)
-            //print("INDEX",i,j,srv)
-        }
-    }
-    //     arrSevers.filter({
-    //     $0.intValue == 0 || $0.intNeighbourBot == 0  || $0.intNeighbourTop == 0 || $0.intNeighbourRight == 0 || $0.intNeighbourLeft == 0
-    //    }).count != 0
-    while( arrSevers.filter({
-        $0.intValue == 0
-    }).count != 0) {
-        //var arr = arrSevers
-        for (i, _) in arrSevers.enumerated() {
-            //print("SERVER BEFORE", arrSevers[i].intValue, arrSevers[i].intNeighbourBot, arrSevers[i].intNeighbourTop,arrSevers[i].intNeighbourLeft, arrSevers[i].intNeighbourRight)
-            if arrSevers[i].intValue == 0 {
-                if arrSevers[i].intNeighbourBot == 1 || arrSevers[i].intNeighbourTop == 1 || arrSevers[i].intNeighbourLeft == 1 || arrSevers[i].intNeighbourRight == 1 {
-//                    arrSevers[i].intValue = 1
-//                    // update neighbour top
-//                    if i < columns || i < arrSevers.count - columns {
+//
+//class server {
+//    var intValue = 0
+//    var intNeighbourTop = 0
+//    var intNeighbourLeft = 0
+//    var intNeighbourBot = 0
+//    var intNeighbourRight = 0
+//}
+//
+//func minimumHours(rows:Int, columns:Int, grid:[[Int]]) -> Int {
+//    var intCount = 0
+//    var arrSevers = [server]()
+//    for i in 0...rows - 1 {
+//
+//        for j in 0...columns - 1 {
+//            //print("INDEX I=",i, " J =",j)
+//            var srv = server()
+//            let arr2 = grid[i]
+//            srv.intValue = arr2[j]
+//            if i == 0 {
+//                srv.intNeighbourTop = -1
+//                let arr3 = grid[i + 1]
+//                srv.intNeighbourBot = arr3[j]
+//                if j == 0 || j == columns - 1 {
+//                    if j == 0 {
+//                        srv.intNeighbourLeft = -1
+//                        srv.intNeighbourRight = arr2[j + 1]
+//                    } else {
+//                        srv.intNeighbourRight = -1
+//                        srv.intNeighbourLeft = arr2[j - 1]
+//                    }
+//                } else {
+//                    srv.intNeighbourLeft = arr2[j - 1]
+//                    srv.intNeighbourRight = arr2[j + 1]
+//
+//                }
+//            } else if i == rows - 1{
+//                srv.intNeighbourBot = -1
+//                let arr3 = grid[i - 1]
+//                srv.intNeighbourTop = arr3[j]
+//                if j == 0 || j == columns - 1 {
+//                    if j == 0 {
+//                        srv.intNeighbourLeft = -1
+//                    } else {
+//                        srv.intNeighbourRight = -1
+//                    }
+//                } else {
+//                    srv.intNeighbourLeft = arr2[j - 1]
+//                    srv.intNeighbourRight = arr2[j + 1]
+//
+//                }
+//            } else {
+//                let arrTop = grid[i - 1]
+//                let arrBot = grid[i + 1]
+//                srv.intNeighbourBot = arrBot[j]
+//                srv.intNeighbourTop = arrTop[j]
+//
+//                if j == 0 || j == columns - 1 {
+//                    if j == 0 {
+//                        srv.intNeighbourLeft = -1
+//                    } else {
+//                        srv.intNeighbourRight = -1
+//                    }
+//                } else {
+//                    srv.intNeighbourLeft = arr2[j - 1]
+//                    srv.intNeighbourRight = arr2[j + 1]
+//
+//                }
+//            }
+//            arrSevers.append(srv)
+//            //print("INDEX",i,j,srv)
+//        }
+//    }
+//    //     arrSevers.filter({
+//    //     $0.intValue == 0 || $0.intNeighbourBot == 0  || $0.intNeighbourTop == 0 || $0.intNeighbourRight == 0 || $0.intNeighbourLeft == 0
+//    //    }).count != 0
+//    while( arrSevers.filter({
+//        $0.intValue == 0
+//    }).count != 0) {
+//        //var arr = arrSevers
+//        for (i, _) in arrSevers.enumerated() {
+//            //print("SERVER BEFORE", arrSevers[i].intValue, arrSevers[i].intNeighbourBot, arrSevers[i].intNeighbourTop,arrSevers[i].intNeighbourLeft, arrSevers[i].intNeighbourRight)
+//            if arrSevers[i].intValue == 0 {
+//                if arrSevers[i].intNeighbourBot == 1 || arrSevers[i].intNeighbourTop == 1 || arrSevers[i].intNeighbourLeft == 1 || arrSevers[i].intNeighbourRight == 1 {
+////                    arrSevers[i].intValue = 1
+////                    // update neighbour top
+////                    if i < columns || i < arrSevers.count - columns {
+////                        arrSevers[i + columns].intNeighbourTop = 1
+////                    }
+////
+////                    // update neighbour bot
+////                    if i >= columns && i < arrSevers.count {
+////                        arrSevers[i - columns].intNeighbourBot = 1
+////                    }
+////                    //update right
+////                    if i != arrSevers.count - 1 {
+////                     arrSevers[i+1].intNeighbourLeft = 1
+////                    }
+////
+////                    if i != 0 {
+////                        arrSevers[i-1].intNeighbourRight = 1
+////                    }
+//
+//                }
+//            } else {
+//                print("I", i)
+//                if arrSevers[i].intNeighbourBot == 0 {
+//                    arrSevers[i].intNeighbourBot = 1
+//                    if i < columns || i < arrSevers.count - columns  {
 //                        arrSevers[i + columns].intNeighbourTop = 1
 //                    }
-//                    
-//                    // update neighbour bot
-//                    if i >= columns && i < arrSevers.count {
-//                        arrSevers[i - columns].intNeighbourBot = 1
-//                    }
-//                    //update right
-//                    if i != arrSevers.count - 1 {
-//                     arrSevers[i+1].intNeighbourLeft = 1
-//                    }
-//                    
-//                    if i != 0 {
-//                        arrSevers[i-1].intNeighbourRight = 1
-//                    }
-                    
-                }
-            } else {
-                print("I", i)
-                if arrSevers[i].intNeighbourBot == 0 {
-                    arrSevers[i].intNeighbourBot = 1
-                    if i < columns || i < arrSevers.count - columns  {
-                        arrSevers[i + columns].intNeighbourTop = 1
-                    }
-                }
+//                }
+//
+//                arrSevers[i].intNeighbourRight = 1
+//                if i != 0 || i % 5 != 0 {
+//                    arrSevers[i-1].intValue = 1
+//                }
+//
+//                arrSevers[i].intNeighbourTop = 1
+//                if i >= columns && i < arrSevers.count{
+//                    arrSevers[i - columns].intValue = 1
+//                }
+////                arrSevers[i].intNeighbourLeft = 1
+//            }
+//
+//            print("SERVER AFTER", arrSevers[i].intValue,arrSevers[i].intValue, arrSevers[i].intNeighbourBot, arrSevers[i].intNeighbourTop,arrSevers[i].intNeighbourLeft, arrSevers[i].intNeighbourRight)
+//        }
+//        intCount = intCount + 1
+//    }
+//
+//    print(arrSevers.count)
+//    return intCount
+//
+//}
+//
+//var array = [ [1, 0, 0, 0, 0],
+//              [0, 1, 0, 0, 0],
+//              [0, 0, 0, 1, 0],
+//              [0, 0, 0, 0, 1]
+//]
+//
+//print(minimumHours(rows: 4, columns: 5, grid: array))
 
-                arrSevers[i].intNeighbourRight = 1
-                if i != 0 || i % 5 != 0 {
-                    arrSevers[i-1].intValue = 1
-                }
 
-                arrSevers[i].intNeighbourTop = 1
-                if i >= columns && i < arrSevers.count{
-                    arrSevers[i - columns].intValue = 1
-                }
-//                arrSevers[i].intNeighbourLeft = 1
-            }
-            
-            print("SERVER AFTER", arrSevers[i].intValue,arrSevers[i].intValue, arrSevers[i].intNeighbourBot, arrSevers[i].intNeighbourTop,arrSevers[i].intNeighbourLeft, arrSevers[i].intNeighbourRight)
-        }
-        intCount = intCount + 1
-    }
-    
-    print(arrSevers.count)
-    return intCount
-    
-}
-
-var array = [ [1, 0, 0, 0, 0],
-              [0, 1, 0, 0, 0],
-              [0, 0, 0, 1, 0],
-              [0, 0, 0, 0, 1]
-]
-
-print(minimumHours(rows: 4, columns: 5, grid: array))
+//MARK: - Defer a scope that will be run last
+print("Step 2")
+defer { print("Step 3") }
+print("Step 4")
