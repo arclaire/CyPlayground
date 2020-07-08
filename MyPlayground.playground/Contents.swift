@@ -453,3 +453,12 @@ var str = "Hello, playground"
 print("Step 2")
 defer { print("Step 3") }
 print("Step 4")
+
+//MARK: - multiline variable
+var joseph = """
+When I am an old woman,
+I shall wear purple
+with a red hat that doesn't go,
+and doesn't suit me
+"""
+print(joseph)
