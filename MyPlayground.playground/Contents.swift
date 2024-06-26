@@ -814,3 +814,115 @@ print(arrayResult)
 //
 //}
 print(arrayResult, arrayResult.count)
+
+import Cocoa
+
+var greeting = "Hello, playground"
+
+func groupTitles(_ strs: inout Set<String>, _ output: inout Set<Set<String>>){
+    if strs.count == 0 {
+        return;
+    }
+
+    var res: [String : Set<String>] = [:]
+    var count: [Int] = Array(repeating: 0, count: 26)
+
+    for s in strs {
+        
+        for c: Character in s {
+            let ch: Character = "a"
+            let index = c.asciiValue! - ch.asciiValue!
+            count[Int(index)] += 1
+        }
+
+        var key: String = "";
+        for i in count {
+            key += "#";
+            key += String(i);
+        }
+
+        if res[key] == nil {
+            res[key] = Set<String>()
+        }
+        res[key]!.insert(s)
+        count = Array(repeating: 0, count: 26)
+    }
+
+    let dictKeys = [String](res.keys)
+
+    for itr in dictKeys {
+        output.insert(res[itr]!);
+    }
+
+}
+
+var titles: Set<String> = ["duel","dule","speed","spede","deul","cars"]
+
+    var output = Set<Set<String>>()
+    
+    groupTitles(&titles, &output)
+    var query:String = "spede";
+
+    // Searching for all titles
+    for o in output {
+         
+        if o.contains(query) {
+            print(o);
+        }
+    }
+
+
+
+func swapInt(a : Int, b: Int) ->  [Int] {
+    // .... a=5, b=8
+    var xa = a
+    var xb = b
+    
+    xa = xa + xb
+    xb = xa - xb
+    xa = xa - xb
+    
+    return [xa, xb]
+}
+
+
+
+swapInt(a: 5, b: 8)
+//0, 1, 1, 2, 3, 5, 8, 13, 21, 34,
+
+func isFibo(arr: [Int]) -> Bool {
+    var value = arr.first
+    var count = 0
+    if arr.count <= 2 {
+        return false
+    }
+    for (index,item) in arr.enumerated() {
+        if index > 1 {
+            print(item)
+            print(arr[index-2])
+            print(arr[index-1])
+            if item == arr[index-2] + arr[index-1] {
+                count = count + 1
+            } else {
+                return false
+            }
+        }
+    }
+    
+    if count == arr.count - 2 {
+        return true
+    } else {
+        return false
+    }
+}
+
+isFibo(arr: [8, 13, 21, 34])
+
+func createFiboArr(dataTotal: Int) -> [Int]{
+    //var arr = []
+}
+
+func arrayMinMax(arr:[Int]) {
+    
+}
+
